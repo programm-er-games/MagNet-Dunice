@@ -1,0 +1,881 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+
+/* ////// */
+body {
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                 supported by Chrome, Opera, and Edge */
+}
+
+* {
+  font-family: "Jura";
+  font-weight: 900;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('../image/f3.svg');
+  background-color: #000;
+  background-size: cover;
+  /* Фон подстраивается под размер окна */
+  background-repeat: no-repeat;
+  /* Изображение не повторяется */
+  background-attachment: fixed;
+  /* Фон не двигается при прокрутке */
+  background-position: center;
+  /* Центрирование фона */
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100vw;
+  height: 10vh;
+  margin-top: 2.5em;
+  /* background: #c5c7c1; */
+  padding: 2em;
+  align-items: center;
+}
+
+.logo {
+  height: 70px;
+  filter: drop-shadow(0 0 10px #CFCFCF);
+}
+
+.name {
+  color: #f2f2f2;
+  font-size: 3em;
+
+  position: absolute;
+  top: 29%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+}
+
+/* уведы */
+.notice {
+  display: none;
+  /* Initially hide the notification */
+  align-items: center;
+  /* Вертикальная центровка */
+  justify-content: center;
+  /* Горизонтальная центровка */
+  padding: 0px;
+  /* Сбрасываем padding */
+  width: 560px;
+  height: 55px;
+  border-radius: .2em;
+  position: absolute;
+  top: 230px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.notice.success {
+  border: 5px solid #4e914d;
+  border-top: none;
+  border-bottom: none;
+  background-color: #386637;
+}
+
+.notice.error {
+  border: 5px solid #e74c3c;
+  border-top: none;
+  border-bottom: none;
+  background-color: #c0392b;
+}
+
+.notice.warning {
+  border: 5px solid #f1c40f;
+  border-top: none;
+  border-bottom: none;
+  background-color: #f39c12;
+}
+
+.notice-text {
+  color: #fff;
+  padding-left: 1em;
+  letter-spacing: .1em;
+  margin-top: 10px;
+  /* Центровка текста по горизонтали */
+}
+
+.conteiner {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.box {
+  width: 560px;
+  height: 370px;
+  background-color: #f2f2f282;
+
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+  /* Устанавливаем центр как точку трансформации */
+
+  border-radius: 0.2em;
+  border: 1.5px solid #ccc;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  padding-top: 2.2em;
+  padding-left: 2.2em;
+  padding-right: 2.2em;
+  padding-bottom: 0.4em;
+
+  /* animation: customAni 1s cubic-bezier(0.83, 0, 0.17, 1) 0s 1 reverse none; */
+  animation: customAni 2s ease-out 0s 1 normal forwards;
+}
+
+
+
+/* @keyframes customAni {
+    0% {
+        transform: translate(-50%, -50%) scaleX(1); 
+    }
+    100% {
+        transform: translate(-50%, -50%) scaleX(0.4); 
+    }
+  } */
+
+form {
+  padding: 1em;
+}
+
+.user {
+  color: aquamarine;
+  width: 100%;
+  background-color: black;
+
+  outline: none;
+  padding: 1em;
+  border-radius: 5px;
+
+  transition: all 0.2s ease-in-out;
+  border-left: 5px solid transparent;
+  border-radius: 2px;
+
+  margin-bottom: 15px;
+
+  font-size: 14px;
+}
+
+.log {
+  color: aquamarine;
+  width: 100%;
+  background-color: black;
+
+  outline: none;
+  padding: 1em;
+  border-radius: 5px;
+
+  transition: all 0.2s ease-in-out;
+  border-left: 5px solid transparent;
+  border-radius: 2px;
+
+  font-size: 14px;
+}
+
+.user:focus,
+.log:focus {
+  color: #f2f2f2;
+  background-color: #1f1a1b;
+  border: 7px solid #ff4655;
+  border-top: 2px solid #2df2f200;
+  border-bottom: 2px solid #2df2f200;
+  border-right: 2px solid #2df2f200;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+.horizontal-line1 {
+  position: absolute;
+  top: 10%;
+  /* Положение линии, например, по центру контейнера */
+  left: 0;
+  width: 31%;
+  height: 1.1px;
+  /* Толщина линии */
+  background-color: #ccc;
+  /* Цвет линии */
+  z-index: -1;
+  /* Линия под содержимым */
+}
+
+.horizontal-line2 {
+  position: absolute;
+  justify-content: end;
+  top: 10%;
+  /* Положение линии, например, по центру контейнера */
+  left: 69%;
+  width: 31%;
+  height: 1.1px;
+  /* Толщина линии */
+  background-color: #ccc;
+  /* Цвет линии */
+  z-index: -1;
+  /* Линия под содержимым */
+}
+
+.horizontal1 {
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  top: 40%;
+  left: 50%;
+  position: absolute;
+  width: 33%;
+  height: 1.1px;
+  /* Толщина линии */
+  background-color: #000;
+  /* Цвет линии */
+  /* Линия под содержимым */
+
+}
+
+.horizontal2 {
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  top: 76%;
+  left: 50%;
+  position: absolute;
+  width: 33%;
+  height: 1.1px;
+  /* Толщина линии */
+  background-color: #000;
+  /* Цвет линии */
+  /* Линия под содержимым */
+
+}
+
+.cube1,
+.cube2,
+.cube3,
+.cube4 {
+  height: 7px;
+  width: 7px;
+  background-color: #000;
+}
+
+.cube1 {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  top: 75.6%;
+  left: 66.5%;
+  transform: rotate(45deg);
+}
+
+.cube3 {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  top: 75.6%;
+  left: 33%;
+  transform: rotate(45deg);
+}
+
+.cube4 {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  top: 39.5%;
+  left: 33%;
+  transform: rotate(45deg);
+}
+
+.cube2 {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  top: 39.5%;
+  left: 66.5%;
+  transform: rotate(45deg);
+
+}
+
+.log-out a {
+  position: absolute;
+  color: #ccc;
+  text-decoration: none;
+  top: 3.5em;
+  right: 20.2em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.log-out:hover a {
+  color: #2FBF7F;
+}
+
+/* часы */
+/* .clock-container{
+  color: #ccc;
+  display: inline-flex;
+  top: 3.5em;
+  left: 20.2em;
+} */
+
+.time {
+  position: absolute;
+  color: #ccc;
+
+  top: 3.5em;
+  left: 19.11em;
+
+}
+
+.date {
+  position: absolute;
+  color: #ccc;
+
+  top: 3.5em;
+  left: 24.2em;
+}
+
+.ins {
+  color: #ccc;
+  position: absolute;
+
+  top: 3.45em;
+  left: 23.6em;
+}
+
+/* ============ */
+
+.button_lg {
+  position: relative;
+  display: block;
+  padding: 17px 30px;
+  color: #fff;
+  background-color: #0f1923;
+  overflow: hidden;
+  box-shadow: inset 0px 0px 0px 1px transparent;
+}
+
+.button_lg::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background-color: #0f1923;
+}
+
+.button_lg::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  background-color: #0f1923;
+  transition: all .2s ease;
+}
+
+.button_sl {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: -1px;
+  left: -8px;
+  width: 0;
+  background-color: #ff4655;
+  transform: skew(-15deg);
+  transition: all .2s ease;
+}
+
+.button_text {
+  position: relative;
+}
+
+.button:hover {
+  color: #0f1923;
+}
+
+.button:hover .button_sl {
+  width: calc(100% + 15px);
+}
+
+.button:hover .button_lg::after {
+  background-color: #fff;
+}
+
+/* кнопка техподдержки */
+.button-1 {
+  align-items: center;
+  background-color: transparent;
+  color: #0f1923;
+  cursor: pointer;
+  display: flex;
+
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: uppercase;
+  outline: 0;
+  border: 0;
+  margin-bottom: .5em;
+}
+
+.button-1:before {
+
+  background-color: #ff4655;
+  content: "";
+  display: inline-block;
+  height: 2px;
+  margin-right: 10px;
+  transition: all .42s cubic-bezier(.25, .8, .25, 1);
+  width: 0;
+}
+
+.button-1:hover:before {
+
+  background-color: #D74D4D;
+  width: 3rem;
+}
+
+.boot {
+  margin-left: 1em;
+  margin-top: 3px;
+}
+
+
+/* ТАБЛИЦА */
+
+.table-container {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  top: 17%;
+  width: 90%;
+  left: 5%;
+  margin: auto;
+  /* Центрирование таблицы */
+  color: #ccc;
+  height: 77.5%;
+  overflow-y: auto;
+  /* Добавляем вертикальную прокрутку */
+  overflow-x: hidden;
+  /* Убираем горизонтальную прокрутку */
+
+}
+
+.data-table {
+  width: 100%;
+  /* Ширина таблицы равна ширине контейнера */
+  border-collapse: collapse;
+  /* Убирает границы между ячейками */
+
+}
+
+.data-table thead {
+  position: sticky;
+  /* Фиксируем заголовок таблицы */
+  top: 0;
+  /* Привязываем к верхней части контейнера */
+  z-index: 5;
+  /* Убедитесь, что заголовок находится поверх содержимого */
+}
+
+.data-table thead th {
+  padding: 25px;
+  text-align: center;
+  font-size: 18px;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 1);
+  position: sticky;
+  /* Фиксируем заголовок таблицы */
+  top: 0;
+  /* Привязываем к верхней части контейнера */
+}
+
+.data-table tbody td {
+  border-bottom: 1px solid #ccc;
+  /* Верхняя граница */
+  padding: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  /* Переход для плавной анимации */
+  margin-top: 50px;
+
+}
+
+.data-table td img {
+  width: 55px;
+  /* Фиксированная ширина для картинки */
+  height: 55px;
+  /* Фиксированная высота для картинки */
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.data-table td:nth-child(1) {
+  width: 5%;
+  /* Узкая ширина для первого столбца */
+
+}
+
+.data-table td:nth-child(2) {
+  width: 60px;
+  /* Длинный столбец для текста */
+
+}
+
+.data-table td:nth-child(3) {
+  width: 100px;
+  /* Ширина для чисел */
+
+}
+
+.data-table td:nth-child(4),
+.data-table td:nth-child(5),
+.data-table td:nth-child(8) {
+  width: 80px;
+  /* Ширина для времени */
+}
+
+.data-table td:nth-child(6),
+.data-table td:nth-child(7) {
+  width: 120px;
+  /* Ширина для текста */
+
+}
+
+.data-table thead {
+  position: sticky;
+  /* Фиксируем заголовок таблицы */
+  top: 0;
+  /* Привязываем к верхней части контейнера */
+  z-index: 2;
+  /* Убедитесь, что заголовок находится поверх строк таблицы */
+}
+
+/* Эффект увеличения строки при наведении */
+.data-table tbody tr {
+  transition: transform 0.3s ease, border-bottom 0.3s ease;
+  /* Переход для плавной анимации */
+}
+
+.data-table tbody tr:hover {
+  background: rgba(0, 0, 0, 0.35);
+  ;
+  transform: scale(1.02);
+  /* Увеличение строки по вертикали */
+  border-bottom: 4px solid #e84142;
+  /* Утолщение нижней границы при наведении */
+  color: aquamarine;
+}
+
+/* Окружение таблицы */
+.table-container::-webkit-scrollbar {
+  width: 20px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.pass {
+  position: absolute;
+  width: 150px;
+  height: 200px;
+  background-color: #2FBF7F;
+
+  top: 45%;
+  left: -120px;
+  /* Смещение элемента влево */
+  border-radius: 5px;
+  border: 2px solid #2FBF7F;
+
+  cursor: pointer;
+  opacity: 0.7;
+  /* Полупрозрачность */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  /* Плавная анимация для перемещения и изменения прозрачности */
+}
+
+.pass:hover {
+  transform: translateX(30px);
+  /* Двигаем элемент вправо при наведении */
+  opacity: 1;
+  /* Полная непрозрачность при наведении */
+}
+
+.arrow {
+  position: absolute;
+  left: 127px;
+  top: 50px;
+  width: 10px;
+}
+
+.text-arrow {
+  position: absolute;
+
+  color: #fff;
+  left: 90px;
+  top: 140px;
+  display: inline-block;
+  /* Важно для корректного поворота */
+  transform: rotate(-90deg);
+  /* Поворачиваем текст на 90 градусов */
+  transform-origin: left top;
+  /* Указываем точку вращения */
+  font-size: 24px;
+  /* Размер текста */
+  letter-spacing: 0.1em;
+
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+button {
+  margin: 5px;
+}
+
+
+/* Общий контейнер для строки поиска */
+.search-container {
+  position: absolute;
+  display: flex;
+
+  z-index: 2;
+  margin-top: 147px;
+  left: -630px;
+  background-color: #000;
+
+  width: 700px;
+  height: 71px;
+  opacity: 1;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.search-container:hover {
+
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+.search-container.active {
+  background-color: #D74D4D;
+  /* transform: translateX(465px); */
+  transform: translateX(610px);
+  opacity: 1;
+}
+
+/* Иконка поиска */
+.search-icon {
+  position: absolute;
+  left: 640px;
+  top: 10px;
+  font-size: 2em;
+
+}
+
+/* Стили для самой строки поиска */
+.search-input {
+
+  border: 2px solid #c0392b;
+  color: #0f1923;
+  font-size: 16px;
+
+  outline: none;
+  transition: width 0.4s ease;
+
+  top: 7px;
+  position: relative;
+  width: 300px;
+  height: 55px;
+  left: 320px;
+  /* background-color: #; */
+  border-radius: 5px;
+  direction: none;
+  padding: 20px;
+}
+
+#filterBlock {
+  position: absolute;
+  /* z-index: 2; */
+  display: inline;
+  top: 7px;
+  width: 150px;
+  height: 55px;
+  left: 150px;
+  border-radius: 5px;
+}
+
+/* Стиль строки поиска при фокусе */
+.search-input:focus {
+  width: 300px;
+  opacity: 1;
+  color: brown;
+}
+
+.search-input::placeholder {
+  color: #888;
+  /* Цвет плейсхолдера */
+  opacity: 1;
+  /* Необходимая настройка для некоторых браузеров */
+}
+
+.nado {
+  position: absolute;
+  top: 23px;
+  left: 40px;
+  font-size: 18px;
+}
+
+.refresh-container {
+  position: absolute;
+  display: flex;
+
+  z-index: 2;
+  margin-top: 230px;
+  left: -230px;
+  background-color: #000;
+
+  width: 300px;
+  height: 71px;
+  opacity: 1;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.refresh-container:hover {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+.refresh-container.active {
+  background-color: #D74D4D;
+  /* transform: translateX(465px); */
+  transform: translateX(210px);
+  opacity: 1;
+}
+
+.refresh-icon {
+  position: absolute;
+  left: 248px;
+  top: 10px;
+  font-size: 2em;
+  color: white;
+}
+
+/* ддд */
+.table-container-1 {
+  position: absolute;
+  width: 80%;
+  height: 600px;
+  background-color: #f2f2f2;
+  align-items: center;
+  text-align: center;
+
+  top: 20%;
+  left: 10%;
+
+  padding: 0px 0px 25px 0px;
+
+  border-radius: 3px;
+  border: 2px solid #fff;
+
+  overflow-y: auto;
+}
+
+.table-container-1 h4{
+  font-size: 24px;
+  background-color: #000;
+  color: #ccc;
+  padding: 15px;
+}
+.ofice {
+  background-color: none;
+  margin-top: 10px;
+  display: grid;
+  cursor: pointer;
+
+  padding-top: 25px;
+  padding-bottom: 25px;
+
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+.ofice:hover {
+  background: black;
+  color: aquamarine;
+  transition: 0.5s ease-out;
+}
+.Noffice{
+  display: grid;
+  position: relative;
+  background-color: #ccc;
+  width: 100%;
+  height: 55px;
+  color: #000;
+  margin-bottom: 5px;
+  align-content: center;
+  padding: 15px 15px 15px 25px;
+  cursor: pointer;
+  transition:  0.3s ease;
+  font-size: 20px;
+}
+
+.Noffice:hover{
+  background-color: #0f1923;
+  color: #2FBF7F;
+}

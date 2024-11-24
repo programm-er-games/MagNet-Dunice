@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная | Охранник</title>
+  <link rel="stylesheet" href="../styles/base.css">
+</head>
+<body>
+<!-- ВЕРХНИЙ БАР -->
+<nav class="nav-bar">
+  <div class="logo">
+    <img src="../image/logo2.svg" class="logo">
+  </div>
+</nav>
+
+
+
+<div class="container">
+  <div class="box">
+    <div class="line3"></div>
+    <div class="line4"></div>
+    <div class="cube1"></div>
+    <div class="cube2"></div>
+    <div class="cube3"></div>
+    <div class="version"><h2>MASTER v0.0.1</h2></div>
+    <div class="start-page">
+      <img src="" alt="">
+      <p>Стартовая страница</p>
+    </div>
+    <div class="russo">
+      <div class="nado"><a href="#">Технические шоколадки</a></div>
+      <div class="ne-nado"><a href="../page/serchOFICE.html">Офисы</a></div>
+    </div>
+    
+
+    <div class="line1"></div>
+    <div class="line2"></div>
+    
+  </div>
+</div>
+
+
+
+
+<!-- Допы -->
+<!-- часы карточки -->
+  <div id="date" class="date"></div>
+  <!-- <div  class="ins">|</div> -->
+  <div id="time" class="time"></div>
+
+
+  <div class="line10"></div>
+  <div class="line11"></div>
+  <div class="cube10"></div>
+  <div class="cube11"></div>
+  <div class="cube12"></div>
+  
+
+
+  <div class="card">
+    <div class="card-details">
+      <img src="../image/info.svg" alt="">
+      <p class="text-title">Card title</p>
+      <p class="text-body">Here are the details of the card</p>
+    </div>
+    <button class="card-button">More info</button>
+  </div>
+  <div class="card2">
+    <div class="card-details">
+      <img src="../image/info.svg" alt="">
+      <p class="text-title">Card title</p>
+      <p class="text-body">Here are the details of the card</p>
+    </div>
+    <button class="card-button">More info</button>
+  </div>
+  <div class="card3">
+    <div class="card-details">
+      <img src="../image/info.svg" alt="">
+      <p class="text-title">Card title</p>
+      <p class="text-body">Here are the details of the card</p>
+    </div>
+    <button class="card-button">More info</button>
+  </div>
+
+</div>
+<div class="log-out">
+  <a href="../page/index.html">Выйти из аккаунта</a>
+</div>
+
+<div class="bottom-bar">
+  <h6>©MagNet</h6>
+</div>
+
+
+<div class="horizontal-line1"></div>
+<div class="horizontal-line2"></div>
+
+<!-- СКРИПТЫ -->
+  <script src="../app/script.js"></script>
+  <script>
+    document.addEventListener('selectstart', function(e) {
+    e.preventDefault(); // Отключает выделение текста
+    });
+  </script>
+  <script>
+    // Устанавливаем масштаб на 100%
+    function setZoomLevel() {
+      document.body.style.zoom = "100%";
+    }
+
+    // Блокируем изменение масштаба через клавиатуру и мышь
+    window.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey && (e.key === '=' || e.key === '-' || e.key === '0')) || e.key === 'F11') {
+        e.preventDefault();
+      }
+    });
+
+    window.addEventListener('wheel', function(e) {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Следим за изменением размера окна и возвращаем масштаб на 100%
+    window.addEventListener('resize', setZoomLevel);
+
+    // Устанавливаем начальный масштаб на 100%
+    setZoomLevel();
+
+
+    
+  function updateClock() {
+  const now = new Date();
+  
+  // Получаем время
+  let hours = String(now.getHours()).padStart(2, '0');
+  let minutes = String(now.getMinutes()).padStart(2, '0');
+  let seconds = String(now.getSeconds()).padStart(2, '0');
+  
+  // Форматируем время в HH:MM:SS
+  let timeString = `${hours}:${minutes}:${seconds}`;
+  
+  // Получаем дату
+  let day = String(now.getDate()).padStart(2, '0');
+  let month = String(now.getMonth() + 1).padStart(2, '0'); // Месяцы начинаются с 0
+  let year = now.getFullYear();
+  
+  // Форматируем дату в DD.MM.YYYY
+  let dateString = `${day}.${month}.${year}`;
+  
+  // Обновляем элементы на странице
+  document.getElementById('time').textContent = timeString;
+  document.getElementById('date').textContent = dateString;
+}
+
+// Обновляем часы каждую секунду
+setInterval(updateClock, 1000);
+
+// Первоначальный вызов, чтобы часы начали работать сразу
+updateClock();
+
+
+  </script>
+</body>
+</html>

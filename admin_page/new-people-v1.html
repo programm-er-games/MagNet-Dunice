@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Добавить | Пользователи | Админ</title>
+  <link rel="stylesheet" href="../admin_style/all.css">
+</head>
+
+<body>
+  <!-- ВЕРХНИЙ БАР -->
+  <nav class="nav-bar">
+    <div class="logo">
+      <img src="../image/logo2.svg" class="logo">
+    </div>
+  </nav>
+
+  <!-- <div class="conva"></div>
+<div class="conva-2"></div> -->
+
+  <div class="container-1"></div>
+  <div class="cube1-1"></div>
+  <div class="cube2-1"></div>
+  <div class="cube3-1"></div>
+  <div class="cube4-1"></div>
+  <div class="horizontal1-1"></div>
+  <div class="horizontal2-1"></div>
+  <div class="box-1">
+    <form id="my-form">
+      <p>| ФИО</p>
+      <input placeholder="Введите ФИО" id="full-name" type="text" class="user-1">
+
+      <p class="p-1">| Роль</p>
+      <select id="role" class="log-1">
+        <option value="">Выберите роль</option>
+        <option value="student">Пользовтаель(beta)</option>
+        <option value="teacher">Сотрудник</option>
+        <option value="staff">Менеджер(beta)</option>
+        <option value="admin">Админ</option>
+      </select>
+
+      <p class="p-2">| Номер телефона</p>
+      <input placeholder="+7 (XXX) XXX-XX-XX" id="phone-number" type="text" class="log-2" maxlength="11"
+        pattern="\d{11}" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+
+      <p class="p-4">| Пароль подтверждения</p>
+      <input placeholder="подтвердите пароль" id="confirm-password" type="password" class="log-4">
+
+      <button class="password-button" id="confirm-button">◈ Создать пользователя</button>
+    </form>
+    <!-- Уведомление -->
+    <div id="notice"
+      style="display: none; padding: 5px; margin-top: 10px; justify-content: center; align-items: center;">
+      <p id="notice-text"></p>
+    </div>
+
+
+    <div class="content-box">
+      <label class="checkBox-1">
+        <input id="ch1" type="checkbox">
+        <div class="transition-1"></div>
+      </label>
+      <label class="checkBox-1">
+        <input id="ch1" type="checkbox">
+        <div class="transition-1"></div>
+    </div>
+
+    <div class="BOXbut">
+      <p class="butBOX">Логин:</p>
+      <p class="butBOX">Пароль:</p>
+    </div>
+
+
+
+  </div>
+
+
+  </div>
+
+  <!-- Допы -->
+  <div class="pass">
+    <p class="text-arrow">назад</p>
+    <img src="../image/arrow1.png" class="arrow">
+  </div>
+
+  <div id="date" class="date"></div>
+  <div class="ins">|</div>
+  <div id="time" class="time"></div>
+
+  </div>
+  <div class="log-out">
+    <a href="../page/index.html" id="logout">Выйти из системы</a>
+  </div>
+
+  <div class="horizontal-line1"></div>
+  <div class="horizontal-line2"></div>
+
+  <!-- СКРИПТЫ -->
+  <script>
+    document.getElementById("confirm-button").addEventListener("click", function (event) {
+      event.preventDefault(); // Отключаем отправку формы
+
+      const fullName = document.getElementById("full-name").value.trim();
+      const role = document.getElementById("role").value;
+      const phoneNumber = document.getElementById("phone-number").value;
+      const confirmPassword = document.getElementById("confirm-password").value;
+      const notice = document.getElementById("notice");
+      const noticeText = document.getElementById("notice-text");
+
+      const correctPassword = "password"; // Замените на правильный пароль для проверки
+
+      // Проверка заполненности полей
+      let result;
+      if (!fullName) {
+        showNotification(notice, noticeText, "warning", "Пожалуйста, введите ваше ФИО.");
+      } else if (!role) {
+        showNotification(notice, noticeText, "warning", "Пожалуйста, выберите роль.");
+      } else if (phoneNumber.length !== 11) {
+        showNotification(notice, noticeText, "warning", "Номер телефона должен содержать 11 цифр.");
+      } else if (confirmPassword !== correctPassword) {
+        showNotification(notice, noticeText, "error", "Ошибка: неправильный пароль.");
+      } else {
+        showNotification(notice, noticeText, "success", "Все данные успешно проверены!");
+        result = window.db_api.create("users");
+      }
+      if (result instanceof String === true) showNotification(notice, noticeText, "error", "Возникла ошибка: " + result);
+    });
+
+    function showNotification(notice, noticeText, type, message) {
+      notice.className = `notice ${type}`;
+      noticeText.textContent = message;
+      notice.style.display = "flex";
+
+      // Скрыть уведомление через 3 секунды
+      setTimeout(() => {
+        notice.style.display = "none";
+      }, 3000);
+    }
+
+  </script>
+
+
+  <script>
+    // Получаем ссылки на элементы
+    const fileInput = document.getElementById('fileInput');
+    const replaceBtn = document.getElementById('replaceBtn');
+    const deleteBtn = document.getElementById('deleteBtn');
+    const uploadedImage = document.getElementById('uploadedImage');
+
+    // Функция для отображения загруженной картинки
+    fileInput.addEventListener('change', function () {
+      const file = this.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        // Когда файл загружен
+        reader.onload = function (e) {
+          uploadedImage.setAttribute('src', e.target.result);
+          uploadedImage.style.display = 'block';
+          fileInput.style.display = 'none';  // Скрываем поле загрузки после выбора
+          replaceBtn.style.display = 'inline-block';
+          deleteBtn.style.display = 'inline-block';
+        };
+
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Функция для замены изображения
+    replaceBtn.addEventListener('click', function () {
+      fileInput.click();  // Имитируем клик по полю загрузки
+    });
+
+    // Функция для удаления изображения
+    deleteBtn.addEventListener('click', function () {
+      uploadedImage.setAttribute('src', '');
+      uploadedImage.style.display = 'none';
+      fileInput.value = '';  // Очищаем значение input
+      fileInput.style.display = 'block';  // Показываем поле загрузки
+      replaceBtn.style.display = 'none';  // Скрываем кнопки
+      deleteBtn.style.display = 'none';
+    });
+
+  </script>
+  <script src="../app/script.js"></script>
+  <script>
+    document.addEventListener('selectstart', function (e) {
+      e.preventDefault(); // Отключает выделение текста
+    });
+  </script>
+  <script>
+    // Добавляем обработчик клика на элемент .pass
+    document.querySelector('.pass').addEventListener('click', function () {
+      // Перенаправление на другой HTML файл
+      window.location.href = '../admin_page/people.html'; // Замените 'another-page.html' на название вашего HTML файла
+    });
+  </script>
+  <script>
+    // Устанавливаем масштаб на 100%
+    function setZoomLevel() {
+      document.body.style.zoom = "100%";
+    }
+
+    // Блокируем изменение масштаба через клавиатуру и мышь
+    window.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey && (e.key === '=' || e.key === '-' || e.key === '0')) || e.key === 'F11') {
+        e.preventDefault();
+      }
+    });
+
+    window.addEventListener('wheel', function (e) {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Следим за изменением размера окна и возвращаем масштаб на 100%
+    window.addEventListener('resize', setZoomLevel);
+
+    // Устанавливаем начальный масштаб на 100%
+    setZoomLevel();
+
+
+
+    function updateClock() {
+      const now = new Date();
+
+      // Получаем время
+      let hours = String(now.getHours()).padStart(2, '0');
+      let minutes = String(now.getMinutes()).padStart(2, '0');
+      let seconds = String(now.getSeconds()).padStart(2, '0');
+
+      // Форматируем время в HH:MM:SS
+      let timeString = `${hours}:${minutes}:${seconds}`;
+
+      // Получаем дату
+      let day = String(now.getDate()).padStart(2, '0');
+      let month = String(now.getMonth() + 1).padStart(2, '0'); // Месяцы начинаются с 0
+      let year = now.getFullYear();
+
+      // Форматируем дату в DD.MM.YYYY
+      let dateString = `${day}.${month}.${year}`;
+
+      // Обновляем элементы на странице
+      document.getElementById('time').textContent = timeString;
+      document.getElementById('date').textContent = dateString;
+    }
+
+    // Обновляем часы каждую секунду
+    setInterval(updateClock, 1000);
+
+    // Первоначальный вызов, чтобы часы начали работать сразу
+    updateClock();
+
+
+  </script>
+</body>
+
+</html>

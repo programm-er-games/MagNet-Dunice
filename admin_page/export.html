@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Экспорт данных | Админ</title>
+  <link rel="stylesheet" href="../admin_style/all.css">
+</head>
+
+<body>
+  <!-- ВЕРХНИЙ БАР -->
+  <nav class="nav-bar">
+    <div class="logo">
+      <img src="../image/logo2.svg" class="logo">
+    </div>
+  </nav>
+
+  <div class="box">
+    <h4>Список действий</h4>
+    <div class="mirror" onclick="window.export_api.export()">Экспортировать данные в таблицу</div>
+  </div>
+
+
+
+  <!-- Допы -->
+
+  <div id="date" class="date"></div>
+  <div class="ins">|</div>
+  <div id="time" class="time"></div>
+
+  </div>
+  <div class="log-out">
+    <a href="../page/index.html" id="logout">Выйти из системы</a>
+  </div>
+
+  <div class="horizontal-line1"></div>
+  <div class="horizontal-line2"></div>
+
+
+  <div class="pass">
+    <p class="text-arrow">назад</p>
+    <img src="../image/arrow1.png" class="arrow">
+  </div>
+
+  <!-- СКРИПТЫ -->
+  <script src="../app/script.js"></script>
+  <script>
+    document.addEventListener('selectstart', function (e) {
+      e.preventDefault(); // Отключает выделение текста
+    });
+  </script>
+  <script>
+    // Добавляем обработчик клика на элемент .pass
+    document.querySelector('.pass').addEventListener('click', function () {
+      // Перенаправление на другой HTML файл
+      window.location.href = '../admin_page/base.html'; // Замените 'another-page.html' на название вашего HTML файла
+    });
+  </script>
+
+  <script>
+    // Устанавливаем масштаб на 100%
+    function setZoomLevel() {
+      document.body.style.zoom = "100%";
+    }
+
+    // Блокируем изменение масштаба через клавиатуру и мышь
+    window.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey && (e.key === '=' || e.key === '-' || e.key === '0')) || e.key === 'F11') {
+        e.preventDefault();
+      }
+    });
+
+    window.addEventListener('wheel', function (e) {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Следим за изменением размера окна и возвращаем масштаб на 100%
+    window.addEventListener('resize', setZoomLevel);
+
+    // Устанавливаем начальный масштаб на 100%
+    setZoomLevel();
+
+
+
+    function updateClock() {
+      const now = new Date();
+
+      // Получаем время
+      let hours = String(now.getHours()).padStart(2, '0');
+      let minutes = String(now.getMinutes()).padStart(2, '0');
+      let seconds = String(now.getSeconds()).padStart(2, '0');
+
+      // Форматируем время в HH:MM:SS
+      let timeString = `${hours}:${minutes}:${seconds}`;
+
+      // Получаем дату
+      let day = String(now.getDate()).padStart(2, '0');
+      let month = String(now.getMonth() + 1).padStart(2, '0'); // Месяцы начинаются с 0
+      let year = now.getFullYear();
+
+      // Форматируем дату в DD.MM.YYYY
+      let dateString = `${day}.${month}.${year}`;
+
+      // Обновляем элементы на странице
+      document.getElementById('time').textContent = timeString;
+      document.getElementById('date').textContent = dateString;
+    }
+
+    // Обновляем часы каждую секунду
+    setInterval(updateClock, 1000);
+
+    // Первоначальный вызов, чтобы часы начали работать сразу
+    updateClock();
+
+
+  </script>
+</body>
+
+</html>

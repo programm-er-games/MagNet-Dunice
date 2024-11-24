@@ -1,0 +1,430 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+/* ////// */
+body {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none;         /* Non-prefixed version, currently
+                                 supported by Chrome, Opera, and Edge */
+}
+
+*{
+  font-family: "Jura";
+  font-weight: 900;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('../image/f3.svg');
+  background-color: #000;
+  background-size: cover; /* Фон подстраивается под размер окна */
+  background-repeat: no-repeat; /* Изображение не повторяется */
+  background-attachment: fixed; /* Фон не двигается при прокрутке */
+  background-position: center; /* Центрирование фона */
+}
+
+.nav-bar{
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100vw;
+  height: 10vh;
+  margin-top: 2.5em;
+  /* background: #c5c7c1; */
+  padding: 2em;
+  align-items: center;
+}
+
+.logo{
+  height: 70px;
+  filter: drop-shadow(0 0 10px #CFCFCF);
+}
+
+.name{
+  color: #f2f2f2;
+  font-size: 3em;
+
+  position: absolute;
+  top: 29%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+}
+
+/* уведы */
+.notice {
+  display: none; /* Initially hide the notification */
+  align-items: center; /* Вертикальная центровка */
+  justify-content: center; /* Горизонтальная центровка */
+  padding: 0px; /* Сбрасываем padding */
+  width: 560px;
+  height: 55px;
+  border-radius: .2em;
+  position: absolute;
+  top: 230px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.notice.success {
+  border: 5px solid #4e914d; border-top: none; border-bottom: none;
+  background-color: #386637;
+}
+
+.notice.error {
+  border: 5px solid #e74c3c; border-top: none; border-bottom: none;
+  background-color: #c0392b;
+}
+
+.notice.warning {
+  border: 5px solid #f1c40f; border-top: none; border-bottom: none;
+  background-color: #f39c12;
+}
+
+.notice-text {
+  color: #fff;
+  padding-left: 1em;
+  letter-spacing: .1em;
+  margin-top: 10px; /* Центровка текста по горизонтали */
+}
+
+.conteiner{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  }
+
+.box {
+  width: 560px;
+  height: 370px;
+  background-color: #f2f2f282;
+  
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center; /* Устанавливаем центр как точку трансформации */
+  
+  border-radius: 0.2em;
+  border: 1.5px solid #ccc;
+  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  padding-top: 2.2em;
+  padding-left: 2.2em;
+  padding-right: 2.2em;
+  padding-bottom: 0.4em;
+  
+  /* animation: customAni 1s cubic-bezier(0.83, 0, 0.17, 1) 0s 1 reverse none; */
+  animation: customAni 2s ease-out 0s 1 normal forwards;
+  }
+
+
+  
+  /* @keyframes customAni {
+    0% {
+        transform: translate(-50%, -50%) scaleX(1); 
+    }
+    100% {
+        transform: translate(-50%, -50%) scaleX(0.4); 
+    }
+  } */
+
+  form{
+    padding: 1em;
+  }
+
+.user{
+  color: aquamarine;
+  width: 100%;
+  background-color: black;
+  
+  outline: none;
+  padding: 1em;
+  border-radius: 5px;
+
+  transition: all 0.2s ease-in-out;
+  border-left: 5px solid transparent;
+  border-radius: 2px;
+
+  margin-bottom: 15px;
+
+  font-size: 14px;
+}
+
+.log{
+  color: aquamarine;
+  width: 100%;
+  background-color: black;
+  
+  outline: none;
+  padding: 1em;
+  border-radius: 5px;
+
+  transition: all 0.2s ease-in-out;
+  border-left: 5px solid transparent;
+  border-radius: 2px;
+
+  font-size: 14px;
+}
+
+.user:focus,
+.log:focus  {
+  color: #f2f2f2;
+  background-color: #1f1a1b;
+  border: 7px solid #2FBF7F; border-top: 2px solid #2df2f200; border-bottom: 2px solid #2df2f200; border-right: 2px solid #2df2f200;
+}
+
+p{
+  margin-bottom: 10px;
+}
+
+.horizontal-line1{
+  position: absolute;
+  top: 10%; /* Положение линии, например, по центру контейнера */
+  left: 0;
+  width: 31%;
+  height: 1.1px; /* Толщина линии */
+  background-color: #ccc; /* Цвет линии */
+  z-index: -1; /* Линия под содержимым */
+}
+
+.horizontal-line2{
+  position: absolute;
+  justify-content: end;
+  top: 10%; /* Положение линии, например, по центру контейнера */
+  left: 69%;
+  width: 31%;
+  height: 1.1px; /* Толщина линии */
+  background-color: #ccc; /* Цвет линии */
+  z-index: -1; /* Линия под содержимым */
+}
+
+.horizontal1{
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  top: 40%;
+  left: 50%;
+  position: absolute;
+  width: 33%;
+  height: 1.1px; /* Толщина линии */
+  background-color: #000; /* Цвет линии */
+   /* Линия под содержимым */
+ 
+}
+
+.horizontal2{
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  top: 76%;
+  left: 50%;
+  position: absolute;
+  width: 33%;
+  height: 1.1px; /* Толщина линии */
+  background-color: #000; /* Цвет линии */
+   /* Линия под содержимым */
+  
+}
+
+.cube1, .cube2,
+.cube3, .cube4{
+  height: 7px;
+  width: 7px;
+  background-color: #000;
+}
+
+.cube1{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  top: 75.6%;
+  left: 66.5%;
+  transform: rotate(45deg);
+}
+
+.cube3{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  top: 75.6%;
+  left: 33%;
+  transform: rotate(45deg);
+}
+.cube4{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  top: 39.5%;
+  left: 33%;
+  transform: rotate(45deg);
+}
+.cube2{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  top: 39.5%;
+  left: 66.5%;
+  transform: rotate(45deg);
+  
+}
+
+.log-out a{
+  position: absolute;
+  color: #ccc;
+  text-decoration: none;
+  top: 3.5em;
+  right: 20.2em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.log-out:hover a{
+  color: #2FBF7F;
+}
+
+/* часы */
+/* .clock-container{
+  color: #ccc;
+  display: inline-flex;
+  top: 3.5em;
+  left: 20.2em;
+} */
+
+.time{
+  position: absolute;
+  color: #ccc;
+
+  top: 3.5em;
+  left: 19.11em;
+
+}
+
+.date{
+  position: absolute;
+  color: #ccc;
+
+  top: 3.5em;
+  left: 24.2em;
+}
+
+.ins{
+  color: #ccc;
+  position: absolute;
+
+  top: 3.45em;
+  left: 23.6em;
+}
+
+/* ============ */
+
+.button_lg {
+  position: relative;
+  display: block;
+  padding: 17px 30px;
+  color: #fff;
+  background-color: #0f1923;
+  overflow: hidden;
+  box-shadow: inset 0px 0px 0px 1px transparent;
+}
+
+.button_lg::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background-color: #0f1923;
+}
+
+.button_lg::after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  background-color: #0f1923;
+  transition: all .2s ease;
+}
+
+.button_sl {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: -1px;
+  left: -8px;
+  width: 0;
+  background-color: #2FBF7F;
+  transform: skew(-15deg);
+  transition: all .2s ease;
+}
+
+.button_text {
+  position: relative;
+}
+
+.button:hover {
+  color: #0f1923;
+}
+
+.button:hover .button_sl {
+  width: calc(100% + 15px);
+}
+
+.button:hover .button_lg::after {
+  background-color: #fff;
+}
+
+/* кнопка техподдержки */
+.button-1 {
+  align-items: center;
+  background-color: transparent;
+  color: #0f1923;
+  cursor: pointer;
+  display: flex;
+  
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: uppercase;
+  outline: 0;
+  border: 0;
+  margin-bottom: .5em;
+}
+
+.button-1:before {
+  
+  background-color: #2FBF7F;
+  content: "";
+  display: inline-block;
+  height: 2px;
+  margin-right: 10px;
+  transition: all .42s cubic-bezier(.25,.8,.25,1);
+  width: 0;
+}
+
+.button-1:hover:before {
+  
+  background-color: #0f1923;
+  width: 3rem;
+}
+
+.boot{
+  margin-left: 1em;
+  margin-top: 3px; 
+}
+
+
+/* ЗАГРУЗКА НАСТРОЙКИ */
+

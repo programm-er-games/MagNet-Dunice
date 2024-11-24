@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Добавить | Ключи | Админ</title>
+  <link rel="stylesheet" href="../admin_style/all.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.1/fabric.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaderjs@latest/dist/leaderjs.min.js"></script>
+
+</head>
+
+<!-- <div class="bachsize"></div> -->
+
+<!-- левый бар -->
+<div class="leftBAR">
+  <!-- аккаунт -->
+  <div class="accountADMIN">
+    <img src="#" alt="" class="foto">
+    <h2>Admin A.A</h2>
+    <h5>administration</h5>
+  </div>
+  <!-- первый ярус[кнопки информация/этажи] -->
+  <div id="search-container">
+    <input type="text" id="search-input" placeholder="Поиск..." class="search-input" />
+  </div>
+  <div class="dropdown">
+    <label class="dropdown-label" for="dropdown-toggle" id="dropdown-label">Этажи</label>
+    <input type="checkbox" id="dropdown-toggle">
+    <div class="dropdown-content">
+      <a href="#" data-value="Этаж 1">Этаж 1</a>
+      <a href="#" data-value="Этаж 2">Этаж 2</a>
+      <a href="#" data-value="Этаж 3">Этаж 3</a>
+    </div>
+  </div>
+  <!-- второй ярус [меняются в зависимости от первого яруса] -->
+  <div class="dropdown-1">
+    <label class="dropdown-label-1" for="dropdown-toggle-1" id="dropdown-label-1">Комментарии</label>
+    <input type="checkbox" id="dropdown-toggle-1">
+    <div class="dropdown-content-1">
+      <a href="#" data-value="Комментарий 1">Комментарий 1</a>
+      <a href="#" data-value="Комментарий 2">Комментарий 2</a>
+      <a href="#" data-value="Комментарий 3">Комментарий 3</a>
+    </div>
+  </div>
+</div>
+
+<!-- правый бар -->
+<div class="container">
+  <div class="rightBAR">
+    <div id="toolbar">
+      <p>Шаблоны:</p>
+      <div class="grid">
+        <div class="grid-item" id="office" draggable="true" data-type="office">
+          <svg width="80" height="80">
+            <rect width="80" height="80" fill="none" stroke="black" stroke-width="5" />
+            <text x="10" y="50" font-size="12" fill="black">Офис</text>
+          </svg>
+        </div>
+        <div class="grid-item" id="workplace" draggable="true" data-type="workplace">
+          <svg width="80" height="80">
+            <rect width="80" height="80" fill="lightblue" />
+            <text x="10" y="50" font-size="12" fill="black">Рабочее место</text>
+          </svg>
+        </div>
+        <div class="grid-item" id="kitchen" draggable="true" data-type="kitchen">
+          <svg width="80" height="80">
+            <rect width="80" height="80" fill="lightgreen" />
+            <text x="10" y="50" font-size="12" fill="black">Кухня</text>
+          </svg>
+        </div>
+        <div class="grid-item" id="table" draggable="true" data-type="table">
+          <svg width="50" height="50">
+            <rect width="50" height="50" fill="brown" />
+            <text x="5" y="25" font-size="12" fill="black">Стол</text>
+          </svg>
+        </div>
+        <div class="grid-item" id="chair" draggable="true" data-type="chair">
+          <svg width="50" height="50">
+            <rect width="50" height="50" fill="lightgray" />
+            <text x="5" y="25" font-size="12" fill="black">Стул</text>
+          </svg>
+        </div>
+        <div class="grid-item" id="pc" draggable="true" data-type="pc">
+          <svg width="50" height="50">
+            <rect width="50" height="50" fill="darkgray" />
+            <text x="5" y="25" font-size="12" fill="black">ПК</text>
+          </svg>
+        </div>
+        <div class="grid-item" id="watercooler" draggable="true" data-type="watercooler">
+          <svg width="50" height="50">
+            <circle cx="25" cy="25" r="20" fill="lightblue" />
+            <text x="10" y="25" font-size="12" fill="black">Кулер</text>
+          </svg>
+        </div>
+        <!-- Новые элементы -->
+        <div class="grid-item" id="window" draggable="true" data-type="window">
+          <svg width="50" height="50">
+            <rect width="50" height="20" fill="skyblue" />
+            <text x="10" y="15" font-size="12" fill="black">Окно</text>
+          </svg>
+        </div>
+        <div class="grid-item" id="door" draggable="true" data-type="door">
+          <svg width="50" height="80">
+            <rect width="50" height="80" fill="brown" />
+            <text x="10" y="40" font-size="12" fill="black">Дверь</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="slider-container">
+        <label for="widthSlider" class="slider-label">Ширина:</label>
+        <input type="range" id="widthSlider" min="100" max="500" value="300">
+        <span id="widthValue">300px</span>
+      </div>
+
+      <div class="slider-container">
+        <label for="heightSlider" class="slider-label">Высота:</label>
+        <input type="range" id="heightSlider" min="100" max="500" value="300">
+        <span id="heightValue">300px</span>
+      </div>
+
+      <div class="slider-container">
+        <label for="scaleSlider" class="slider-label">Масштаб:</label>
+        <input type="range" id="scaleSlider" min="50" max="200" value="100">
+        <span id="scaleValue">100%</span>
+      </div>
+
+      <button onclick="clearCanvas()">Очистить</button>
+    </div>
+  </div>
+
+  <div id="canvas" class="canvas">
+    <!-- Объекты будут вставляться сюда -->
+  </div>
+
+  <div id="objectControls" class="object-controls" style="z-index: 49;">
+    <h3>Редактирование объекта</h3>
+    <label for="backgroundColor">Цвет фона:</label>
+    <input type="color" id="backgroundColor" onchange="changeBackgroundColor()">
+    <button onclick="deleteSelectedObject()">Удалить объект</button>
+  </div>
+
+  <button onclick="saveCanvas()">Сохранить схему</button>
+</div>
+
+<div class="pass" style="z-index: 50;">
+  <p class="text-arrow">назад</p>
+  <img src="../image/arrow1.png" class="arrow">
+</div>
+
+<script>
+  let selectedElement = null;  // Переменная для хранения выбранного объекта
+  let draggedElement = null;   // Переменная для отслеживания перетаскивания
+  let officeElement = null;
+  let officeCount = 0;
+  let roomCount = 0;
+  let itemCount = 0;
+  let employeeCount = 0;
+
+  let widthSlider = document.getElementById('widthSlider');
+  let heightSlider = document.getElementById('heightSlider');
+  let scaleSlider = document.getElementById('scaleSlider');
+  let widthValue = document.getElementById('widthValue');
+  let heightValue = document.getElementById('heightValue');
+  let scaleValue = document.getElementById('scaleValue');
+  let canvas = document.getElementById('canvas');
+  let objectControls = document.getElementById('objectControls');
+  let deleteButton = document.querySelector('#objectControls button');
+
+  function saveCanvas() {
+    canvas.getElementsByClassName("in_canvas").forEach(element => {
+      window.db_api.create("schemas",
+        {
+          id: officeCount,
+          element_id: element.id,
+          element_name: element.dataset.type,
+          element_settings: element.innerHTML
+        }
+      );
+    });
+  }
+
+  // Ползунки для ширины, высоты и масштаба
+  widthSlider.addEventListener('input', () => {
+    widthValue.textContent = `${widthSlider.value}px`;
+    if (selectedElement) {
+      selectedElement.style.width = `${widthSlider.value}px`;
+    }
+  });
+
+  heightSlider.addEventListener('input', () => {
+    heightValue.textContent = `${heightSlider.value}px`;
+    if (selectedElement) {
+      selectedElement.style.height = `${heightSlider.value}px`;
+    }
+  });
+
+  scaleSlider.addEventListener('input', () => {
+    scaleValue.textContent = `${scaleSlider.value}%`;
+    if (selectedElement) {
+      selectedElement.style.transform = `scale(${scaleSlider.value / 100})`;
+    }
+  });
+
+  // Перетаскивание элементов
+  document.querySelectorAll('.grid-item').forEach(item => {
+    item.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', e.target.dataset.type);
+      draggedElement = e.target;
+    });
+  });
+
+  canvas.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  });
+
+  canvas.addEventListener('drop', (e) => {
+    e.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left;
+    const offsetY = e.clientY - rect.top;
+
+    const type = draggedElement.dataset.type;
+
+    if (type === 'office' && !officeElement) {
+      officeElement = createOffice(offsetX, offsetY);
+      canvas.appendChild(officeElement);
+      window.db_api.create("rooms", { new: officeElement });
+    } else if ((type === 'workplace' || type === 'kitchen' || type === 'table' || type === 'chair' || type === 'pc' || type === 'watercooler') && officeElement) {
+      createRoom(type, offsetX, offsetY);
+    }
+  });
+
+  // Функция для создания офиса
+  function createOffice(x, y) {
+    const officeDiv = document.createElement('div');
+    officeDiv.className = "in_canvas";
+    officeDiv.id = ++officeCount;
+    officeDiv.style.width = `${widthSlider.value}px`;
+    officeDiv.style.height = `${heightSlider.value}px`;
+    officeDiv.style.left = `${x}px`;
+    officeDiv.style.top = `${y}px`;
+    officeDiv.dataset.type = 'office';
+
+    officeDiv.addEventListener('mousedown', (e) => {
+      selectElement(officeDiv, e);
+    });
+
+    officeCount++;
+
+    return officeDiv;
+  }
+
+  // Функция для создания комнаты
+  function createRoom(type, x, y) {
+    const itemDiv = document.createElement('div');
+    itemDiv.className = "in_canvas";
+    itemDiv.style.width = `${widthSlider.value}px`;
+    itemDiv.style.height = `${heightSlider.value}px`;
+    itemDiv.style.left = `${x}px`;
+    itemDiv.style.top = `${y}px`;
+    itemDiv.dataset.type = type;
+    if (type in ['workspace', 'kitchen']) itemDiv.id = ++roomCount;
+    else itemDiv.id = ++itemCount;
+
+    itemDiv.addEventListener('mousedown', (e) => {
+      selectElement(itemDiv, e);
+    });
+
+    // Добавление типов
+    switch (type) {
+      case 'workplace':
+        itemDiv.style.backgroundColor = 'lightblue';
+        break;
+      case 'kitchen':
+        itemDiv.style.backgroundColor = 'lightgreen';
+        break;
+      case 'table':
+        itemDiv.style.backgroundColor = 'brown';
+        break;
+      case 'chair':
+        itemDiv.style.backgroundColor = 'lightgray';
+        break;
+      case 'pc':
+        itemDiv.style.backgroundColor = 'darkgray';
+        break;
+      case 'watercooler':
+        itemDiv.style.backgroundColor = 'lightblue';
+        break;
+    }
+
+    roomCount++;
+
+    canvas.appendChild(itemDiv);
+    let table = "";
+    if (type in ['workspace', 'kitchen', 'office']) table = "rooms";
+    else table = "items";
+    window.db_api.create(table, { new: itemDiv });
+  }
+
+  // Функция для выбора объекта
+  function selectElement(element, e) {
+    if (selectedElement) {
+      selectedElement.classList.remove('selected');
+      objectControls.style.display = 'none';  // Скрыть панель редактирования
+    }
+    selectedElement = element;
+    selectedElement.classList.add('selected');
+
+    // Показываем панель редактирования
+    objectControls.style.display = 'block';
+    widthSlider.value = parseInt(selectedElement.style.width);
+    heightSlider.value = parseInt(selectedElement.style.height);
+    scaleSlider.value = 100;  // Здесь можно добавить логику масштабирования
+
+    // Сохраняем начальные координаты для перемещения
+    let offsetX = e.clientX - selectedElement.getBoundingClientRect().left;
+    let offsetY = e.clientY - selectedElement.getBoundingClientRect().top;
+
+    // Добавляем обработчик для перетаскивания
+    const onMouseMove = (e) => {
+      selectedElement.style.left = `${e.clientX - offsetX}px`;
+      selectedElement.style.top = `${e.clientY - offsetY}px`;
+    };
+
+    // Завершаем перетаскивание
+    const onMouseUp = () => {
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  }
+
+  // Функция для удаления объекта
+  function deleteSelectedObject() {
+    if (selectedElement) {
+      selectedElement.remove();
+      selectedElement = null;
+      objectControls.style.display = 'none';  // Скрыть панель редактирования
+      const type = selectedElement.dataset.type;
+      let table = "";
+      if (type in ['workspace', 'office', 'kitchen']) {
+        window.db_api.delete("rooms", { id: selectedElement.id, type: type });
+      }
+      else if (type === 'employee') {
+        window.db_api.delete("employees", { id: selectedElement.id });
+      }
+      else {
+        window.db_api.delete("items", { id: selectedElement.id, type: type });
+      }
+    }
+  }
+
+  // Очистка канваса
+  function clearCanvas() {
+    while (canvas.firstChild) {
+      canvas.firstChild.remove();
+    }
+    officeElement = null;
+    selectedElement = null;
+    objectControls.style.display = 'none';  // Скрыть панель редактирования
+  }
+
+</script>
+
+<script>
+  document.querySelector('.pass').addEventListener('click', function () {
+    // Перенаправление на другой HTML файл
+    window.location.href = '../admin_page/office.html'; // Замените 'another-page.html' на название вашего HTML файла
+  });
+</script>
+<!-- СКРИПТЫ -->
+<!--    <script>
+     document.addEventListener('DOMContentLoaded', () => {
+      const dropdownBtn = document.querySelector('.dropdown-btn');
+      const dropdownContent = document.querySelector('.dropdown-content');
+
+       dropdownBtn.addEventListener('click', () => {
+         dropdownContent.style.display =
+           dropdownContent.style.display === 'block' ? 'none' : 'block';
+       });
+
+       // Закрытие списка при клике вне элемента
+       document.addEventListener('click', (event) => {
+         if (!dropdownBtn.contains(event.target) && !dropdownContent.contains(event.target)) {
+           dropdownContent.style.display = 'none';
+         }
+       });
+     });
+
+ -->
+
+<!-- <script>
+    document.getElementById("confirm-button").addEventListener("click", function (event) {
+      event.preventDefault(); // Отключаем отправку формы
+
+      const audience = document.getElementById("audience").value.trim();
+      const confirmPassword = document.getElementById("confirm-password").value;
+      const notice = document.getElementById("notice");
+      const noticeText = document.getElementById("notice-text");
+
+      const correctPassword = "password"; // Правильный пароль для примера
+
+      let result;
+      if (!audience || !confirmPassword) {
+        // Показать уведомление о незаполненных полях
+        showNotification(notice, noticeText, "warning", "Незаполненные поля");
+      } else if (confirmPassword === correctPassword) {
+        // Показать уведомление об успешной проверке пароля
+        showNotification(notice, noticeText, "success", "Одобрено! Пароль правильный.");
+        result = window.db_api.create("keys");
+      } else {
+        // Показать уведомление об ошибке пароля
+        showNotification(notice, noticeText, "error", "Ошибка: неправильный пароль");
+      }
+      if (result instanceof String === true) showNotification(notice, noticeText, "error", "Возникла ошибка: " + result);
+    });
+
+  function showNotification(notice, noticeText, type, message) {
+    notice.className = `notice ${type}`;
+    noticeText.textContent = message;
+    notice.style.display = "flex";
+
+    // Скрыть уведомление через 3 секунды
+    setTimeout(() => {
+      notice.style.display = "none";
+    }, 3000);
+  }
+
+  </script > -->
+
+
+<!-- <script>
+  // Получаем ссылки на элементы
+  const fileInput = document.getElementById('fileInput');
+  const replaceBtn = document.getElementById('replaceBtn');
+  const deleteBtn = document.getElementById('deleteBtn');
+  const uploadedImage = document.getElementById('uploadedImage');
+
+  // Функция для отображения загруженной картинки
+  fileInput.addEventListener('change', function () {
+  const file = this.files[0];
+
+  if (file) {
+  const reader = new FileReader();
+
+  // Когда файл загружен
+  reader.onload = function (e) {
+  uploadedImage.setAttribute('src', e.target.result);
+  uploadedImage.style.display = 'block';
+  fileInput.style.display = 'none'; // Скрываем поле загрузки после выбора
+  replaceBtn.style.display = 'inline-block';
+  deleteBtn.style.display = 'inline-block';
+  };
+
+  reader.readAsDataURL(file);
+  }
+  });
+
+  // Функция для замены изображения
+  replaceBtn.addEventListener('click', function () {
+  fileInput.click(); // Имитируем клик по полю загрузки
+  });
+
+  // Функция для удаления изображения
+  deleteBtn.addEventListener('click', function () {
+  uploadedImage.setAttribute('src', '');
+  uploadedImage.style.display = 'none';
+  fileInput.value = ''; // Очищаем значение input
+  fileInput.style.display = 'block'; // Показываем поле загрузки
+  replaceBtn.style.display = 'none'; // Скрываем кнопки
+  deleteBtn.style.display = 'none';
+  });
+
+  </script> -->
+<!-- <script src="../app/script.js"></script> -->
+<script>
+  document.addEventListener('selectstart', function (e) {
+    e.preventDefault(); // Отключает выделение текста
+  });
+</script>
+<script>
+  // // Добавляем обработчик клика на элемент .pass
+  // document.querySelector('.pass').addEventListener('click', function () {
+  //   // Перенаправление на другой HTML файл
+  //   window.location.href = '../admin_page/key.html'; // Замените 'another-page.html' на название вашего HTML файла
+  // });
+</script>
+<script>
+  // Устанавливаем масштаб на 100%
+  function setZoomLevel() {
+    document.body.style.zoom = "100%";
+  }
+
+  // Блокируем изменение масштаба через клавиатуру и мышь
+  window.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey && (e.key === '=' || e.key === '-' || e.key === '0')) || e.key === 'F11') {
+      e.preventDefault();
+    }
+  });
+
+  window.addEventListener('wheel', function (e) {
+    if (e.ctrlKey) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  // Следим за изменением размера окна и возвращаем масштаб на 100%
+  window.addEventListener('resize', setZoomLevel);
+
+  // Устанавливаем начальный масштаб на 100%
+  setZoomLevel();
+
+
+
+  // function updateClock() {
+  //   const now = new Date();
+
+  //   // Получаем время
+  //   let hours = String(now.getHours()).padStart(2, '0');
+  //   let minutes = String(now.getMinutes()).padStart(2, '0');
+  //   let seconds = String(now.getSeconds()).padStart(2, '0');
+
+  //   // Форматируем время в HH:MM:SS
+  //   let timeString = `${hours}:${minutes}:${seconds}`;
+
+  //   // Получаем дату
+  //   let day = String(now.getDate()).padStart(2, '0');
+  //   let month = String(now.getMonth() + 1).padStart(2, '0'); // Месяцы начинаются с 0
+  //   let year = now.getFullYear();
+
+  //   // Форматируем дату в DD.MM.YYYY
+  //   let dateString = `${day}.${month}.${year}`;
+
+  //   // Обновляем элементы на странице
+  //   document.getElementById('time').textContent = timeString;
+  //   document.getElementById('date').textContent = dateString;
+  // }
+
+  // // Обновляем часы каждую секунду
+  // setInterval(updateClock, 1000);
+
+  // // Первоначальный вызов, чтобы часы начали работать сразу
+  // updateClock();
+
+
+</script>
+</body>
+
+</html>

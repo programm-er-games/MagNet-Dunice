@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Авторизация</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+<!-- ВЕРХНИЙ БАР -->
+<nav class="nav-bar">
+  <div class="logo">
+    <img src="../image/logo2.svg" class="logo">
+  </div>
+</nav>
+
+<!-- НАД ПЛАШКОЙ, БУДЕТ МЕНЯТЬСЯ ВО ВРЕМЯ СООБЩЕНИЙ О ВХОДЕ -->
+<div class="notice" id="notice">
+  <img src="../image/info.svg" alt="info"  width="32" class="green" >
+  <p id="notice-text" class="notice-text"> Вы успешно вошли в систему</p>
+</div>
+
+<div class="name"><h4>[ ВХОД В СИСТЕМУ ]</h4></div>
+<!-- КОНТЕЙНЕР -->
+
+<div class="container">
+  <div class="cube1"></div>
+  <div class="cube2"></div>
+  <div class="cube3"></div>
+  <div class="cube4"></div>
+  <div class="horizontal1"></div>
+  <div class="horizontal2"></div>
+  <div class="box">
+   <form>
+    <p>| Имя пользователя</p>
+    <input placeholder="Почта" id="mail" type="text" class="user">
+    <p>| Пароль</p>
+    <input placeholder="Пароль" id="password" type="password" class="log">
+   </form>
+
+   <!-- КНОПКИ -->
+
+   <div class="boot">
+      <button class="button-1">
+     Тех.поддержка
+      </button>
+    <!-- Кнопка входа -->
+      <button class="button"  id="login-button">
+        <span class="button_lg">
+          <span class="button_sl"></span>
+          <span class="button_text">| Войти в систему</span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Допы -->
+
+<div id="date" class="date"></div>
+<div  class="ins">|</div>
+<div id="time" class="time"></div>
+
+</div>
+<div class="log-out">
+  <a href="#" id="logout" >Выйти из системы</a>
+</div>
+
+<div class="horizontal-line1"></div>
+<div class="horizontal-line2"></div>
+
+<!-- СКРИПТЫ -->
+  <script src="../app/script.js"></script>
+  <script>
+    document.addEventListener('selectstart', function(e) {
+    e.preventDefault(); // Отключает выделение текста
+    });
+  </script>
+  <script>
+    document.getElementById('logout').addEventListener('click', function() {
+            // Отправляем сообщение главному процессу для выхода
+            window.electronAPI.quitApp();
+        });
+  </script>
+  <script>
+    // Устанавливаем масштаб на 100%
+    function setZoomLevel() {
+      document.body.style.zoom = "100%";
+    }
+
+    // Блокируем изменение масштаба через клавиатуру и мышь
+    window.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey && (e.key === '=' || e.key === '-' || e.key === '0')) || e.key === 'F11') {
+        e.preventDefault();
+      }
+    });
+
+    window.addEventListener('wheel', function(e) {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Следим за изменением размера окна и возвращаем масштаб на 100%
+    window.addEventListener('resize', setZoomLevel);
+
+    // Устанавливаем начальный масштаб на 100%
+    setZoomLevel();
+
+
+    
+    function updateClock() {
+    const now = new Date();
+    
+    // Получаем время
+    let hours = String(now.getHours()).padStart(2, '0');
+    let minutes = String(now.getMinutes()).padStart(2, '0');
+    let seconds = String(now.getSeconds()).padStart(2, '0');
+    
+    // Форматируем время в HH:MM:SS
+    let timeString = `${hours}:${minutes}:${seconds}`;
+    
+    // Получаем дату
+    let day = String(now.getDate()).padStart(2, '0');
+    let month = String(now.getMonth() + 1).padStart(2, '0'); // Месяцы начинаются с 0
+    let year = now.getFullYear();
+    
+    // Форматируем дату в DD.MM.YYYY
+    let dateString = `${day}.${month}.${year}`;
+    
+    // Обновляем элементы на странице
+    document.getElementById('time').textContent = timeString;
+    document.getElementById('date').textContent = dateString;
+  }
+
+  // Обновляем часы каждую секунду
+  setInterval(updateClock, 1000);
+
+  // Первоначальный вызов, чтобы часы начали работать сразу
+  updateClock();
+</script>
+</body>
+</html>

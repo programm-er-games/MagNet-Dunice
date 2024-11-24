@@ -1,0 +1,611 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+/* ////// */
+body {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none;         /* Non-prefixed version, currently
+                                 supported by Chrome, Opera, and Edge */
+}
+
+*{
+  font-family: "Jura";
+  font-weight: 900;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('../image/f3.svg');
+  background-color: #000;
+  background-size: cover; /* Фон подстраивается под размер окна */
+  background-repeat: no-repeat; /* Изображение не повторяется */
+  background-attachment: fixed; /* Фон не двигается при прокрутке */
+  background-position: center; /* Центрирование фона */
+}
+
+.nav-bar{
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100vw;
+  height: 10vh;
+  margin-top: 2.5em;
+  /* background: #c5c7c1; */
+  padding: 2em;
+  align-items: center;
+}
+
+.logo{
+  height: 70px;
+  filter: drop-shadow(0 0 10px #CFCFCF);
+}
+
+.name{
+  color: #f2f2f2;
+  font-size: 3em;
+
+  position: absolute;
+  top: 29%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+}
+
+/* уведы */
+.notice {
+  display: none; /* Initially hide the notification */
+  align-items: center; /* Вертикальная центровка */
+  justify-content: center; /* Горизонтальная центровка */
+  padding: 0px; /* Сбрасываем padding */
+  width: 560px;
+  height: 55px;
+  border-radius: .2em;
+  position: absolute;
+  top: 230px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.notice.success {
+  border: 5px solid #4e914d; border-top: none; border-bottom: none;
+  background-color: #386637;
+}
+
+.notice.error {
+  border: 5px solid #e74c3c; border-top: none; border-bottom: none;
+  background-color: #c0392b;
+}
+
+.notice.warning {
+  border: 5px solid #f1c40f; border-top: none; border-bottom: none;
+  background-color: #f39c12;
+}
+
+.notice-text {
+  color: #fff;
+  padding-left: 1em;
+  letter-spacing: .1em;
+  margin-top: 10px; /* Центровка текста по горизонтали */
+}
+
+/* Контейнер */
+.container{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  }
+
+.box {
+  width: 560px;
+  height: 410px;
+  background-color: #f2f2f282;
+  
+  position: absolute;
+  top: 53.5%;
+  left: 73%;
+  transform: translate(-50%, -50%);
+  transform-origin: center; /* Устанавливаем центр как точку трансформации */
+  
+  border-radius: 0.2em;
+  border: 1.5px solid #ccc;
+  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  padding-top: 2.2em;
+  padding-left: 2.2em;
+  padding-right: 2.2em;
+  padding-bottom: 0.4em;
+  
+ }
+
+
+.horizontal-line1{
+  position: absolute;
+  top: 10%; /* Положение линии, например, по центру контейнера */
+  left: 0;
+  width: 31%;
+  height: 1.1px; /* Толщина линии */
+  background-color: #ccc; /* Цвет линии */
+  z-index: -1; /* Линия под содержимым */
+}
+
+.horizontal-line2{
+  position: absolute;
+  justify-content: end;
+  top: 10%; /* Положение линии, например, по центру контейнера */
+  left: 69%;
+  width: 31%;
+  height: 1.1px; /* Толщина линии */
+  background-color: #ccc; /* Цвет линии */
+  z-index: -1; /* Линия под содержимым */
+}
+
+.horizontal1{
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  top: 40%;
+  left: 50%;
+  position: absolute;
+  width: 33%;
+  height: 1.1px; /* Толщина линии */
+  background-color: #000; /* Цвет линии */
+   /* Линия под содержимым */
+ 
+}
+
+.horizontal2{
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  top: 76%;
+  left: 50%;
+  position: absolute;
+  width: 33%;
+  height: 1.1px; /* Толщина линии */
+  background-color: #000; /* Цвет линии */
+   /* Линия под содержимым */
+  
+}
+
+.log-out a{
+  position: absolute;
+  color: #ccc;
+  text-decoration: none;
+  top: 3.5em;
+  right: 19.85em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.log-out:hover a{
+  color: #2FBF7F;
+}
+
+
+
+.time{
+  position: absolute;
+  color: #ccc;
+  font-size: 96px;
+  top: 2.65em;
+  left: 1.18em;
+  letter-spacing: .14em;
+}
+
+.date{
+  position: absolute;
+  color: #ccc;
+  font-size: 24px;
+  top: 9.5em;
+  left: 5.2em;
+  letter-spacing: 0.1em;
+}
+
+.ins{
+  color: #ccc;
+  position: absolute;
+
+  top: 3.45em;
+  left: 23.6em;
+}
+
+.start-page{
+  position: absolute;
+  background-color: #000;
+  width: 100%;
+  left: 0;
+  height: 17%;
+  color: #2FBF7F;
+  
+}
+
+.start-page p{
+  font-size: 20px;
+  margin-left: 100px;
+  margin-top: 5px;
+}
+
+.russo{
+  position: absolute;
+  top: 150px;
+  left: 100px;
+  display: grid;
+  cursor: pointer;
+  
+}
+
+.version{
+  color: #fff;
+  position: relative;
+  top: -15px;
+  left: 280px;
+  letter-spacing: .1em;
+}
+
+.line3{
+  position: absolute;
+  height: 100%;
+  top: 90px;
+  width: 2px;
+  left: 60px;
+  background-color: #000;
+}
+
+.line4{
+  position: absolute;
+  height: 2px;
+  top: 35px;
+  left: 60px;
+  width: 40%;
+  background-color: #000;
+}
+
+.cube1{
+  background-color: #000;
+  height: 9px;
+  width: 9px;
+  rotate: 45deg;
+  position: absolute;
+  top: 31.8px;
+  left: 53px;
+}
+
+.cube2{
+  background-color: #fff;
+  height: 12px;
+  width: 12px;
+  rotate: 45deg;
+  position: absolute;
+  top: 94px;
+  left: 54px;
+  z-index: 1;
+}
+
+.cube3{
+  background-color: none;
+  height: 25px;
+  width: 25px;
+  rotate: 45deg;
+  position: absolute;
+  top: 87px;
+  left: 48px;
+  border: 2px solid #fff;
+  z-index: 1;
+}
+
+/* botton */
+.nado{
+  margin-left: -100px;
+  background-color: none;
+  padding: 20px 280px;
+  cursor: pointer;
+  transition: 0.5s ease-out;
+}
+
+.nado a{
+  margin-left: -175px;
+  color: #000;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.nado:hover{
+  background-color: #000;
+}
+.nado:hover a{
+  color: #fff;
+}
+
+.ne-nado{
+  margin-left: -100px;
+  background-color: none;
+  padding: 20px 280px;
+  cursor: pointer;
+  transition: 0.5s ease-out;
+}
+
+.ne-nado a{
+  margin-left: -175px;
+  color: #000;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.ne-nado:hover{
+  background-color: #000;
+}
+.ne-nado:hover a{
+  color: #fff;
+}
+
+
+.line10{
+  position: absolute;
+  top: 27.9%;
+  height: 2px;
+  width: 18.5%;
+  left: 310px;
+  background-color: #000;
+}
+
+.line11{
+  position: absolute;
+  top: 44%;
+  height: 2px;
+  width: 30%;
+  left: 134px;
+  background-color: #000;
+}
+
+.cube10{
+  background-color: #000;
+  height: 9px;
+  width: 9px;
+  rotate: 45deg;
+  position: absolute;
+  top: 43.6%;
+  left: 124px;
+}
+.cube11{
+  background-color: #000;
+  height: 9px;
+  width: 9px;
+  rotate: 45deg;
+  position: absolute;
+  top: 43.6%;
+  left: 590px;
+}
+.cube12{
+  background-color: #000;
+  height: 9px;
+  width: 9px;
+  rotate: 45deg;
+  position: absolute;
+  top: 27.5%;
+  left: 590px;
+}
+
+/* card */
+.card {
+  top: 48%;
+  left: 125px;
+  width: 150px;
+  height: 254px;
+  border-radius: 5px;
+  background: #f5f5f5;
+  position: absolute;
+  padding: 1.8rem;
+  border: 2px solid #c3c6ce;
+  transition: 0.5s ease-out;
+  overflow: visible;
+  opacity: 0.5;
+}
+ 
+ .card-details {
+  position: relative;
+  color: black;
+  height: 90%;
+  top: 0px;
+  /* gap: .5em; */
+  display: grid;
+  place-content: center;
+ }
+ 
+ .card-button {
+  transform: translate(-50%, 125%);
+  width: 60%;
+  border-radius: 5px;
+  border: none;
+  background-color: #2FBF7F;
+  color: #fff;
+  font-size: 1rem;
+  padding: .5rem 1rem;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.3s ease-out;
+ }
+ 
+ .text-body {
+  color: rgb(134, 134, 134);
+ }
+ 
+ /*Text*/
+ .text-title {
+  font-size: 1.5em;
+  font-weight: bold;
+ }
+ 
+ /*Hover*/
+ .card:hover {
+  opacity: 1;
+  border-color: #2FBF7F;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+ }
+ 
+ .card:hover .card-button {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+ }
+
+ img{
+  top: 20px;
+  height: 120px;
+ }
+
+
+ .card2 {
+  top: 48%;
+  left: 285px;
+  width: 150px;
+  height: 254px;
+  border-radius: 5px;
+  background: #f5f5f5;
+  position: absolute;
+  padding: 1.8rem;
+  border: 2px solid #c3c6ce;
+  transition: 0.5s ease-out;
+  overflow: visible;
+  opacity: 0.5;
+}
+ 
+ .card-details {
+  position: relative;
+  color: black;
+  height: 90%;
+  top: 0px;
+  /* gap: .5em; */
+  display: grid;
+  place-content: center;
+ }
+ 
+ .card-button {
+  transform: translate(-50%, 125%);
+  width: 60%;
+  border-radius: 5px;
+  border: none;
+  background-color: #2FBF7F;
+  color: #fff;
+  font-size: 1rem;
+  padding: .5rem 1rem;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.3s ease-out;
+ }
+ 
+ .text-body {
+  color: rgb(134, 134, 134);
+ }
+ 
+ /*Text*/
+ .text-title {
+  font-size: 1.5em;
+  font-weight: bold;
+ }
+ 
+ /*Hover*/
+ .card2:hover {
+  opacity: 1;
+  border-color: #2FBF7F;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+ }
+ 
+ .card2:hover .card-button {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+ }
+
+
+ 
+ .card3 {
+  top: 48%;
+  left: 445px;
+  width: 150px;
+  height: 254px;
+  border-radius: 5px;
+  background: #f5f5f5;
+  position: absolute;
+  padding: 1.8rem;
+  border: 2px solid #c3c6ce;
+  transition: 0.5s ease-out;
+  overflow: visible;
+  opacity: 0.5;
+}
+ 
+ .card-details {
+  position: relative;
+  color: black;
+  height: 90%;
+  top: 0px;
+  /* gap: .5em; */
+  display: grid;
+  place-content: center;
+ }
+ 
+ .card-button {
+  transform: translate(-50%, 125%);
+  width: 60%;
+  border-radius: 5px;
+  border: none;
+  background-color: #2FBF7F;
+  color: #fff;
+  font-size: 1rem;
+  padding: .5rem 1rem;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  opacity: 0;
+  transition: 0.3s ease-out;
+ }
+ 
+ .text-body {
+  color: rgb(134, 134, 134);
+ }
+ 
+ /*Text*/
+ .text-title {
+  font-size: 1.5em;
+  font-weight: bold;
+ }
+ 
+ /*Hover*/
+ .card3:hover {
+  opacity: 1;
+  border-color: #2FBF7F;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+ }
+ 
+ .card3:hover .card-button {
+  transform: translate(-50%, 50%);
+  opacity: 1;
+ }
+
+.bottom-bar{
+  position: absolute;
+  background-color: #000;
+  height: 60px;
+  width: 100%;
+  bottom: 0px;
+}
+
+h6{
+  position: absolute;
+  color: #c3c6ce;
+  top: 45%;
+  left: 45%;
+  font-size: 12px;
+  letter-spacing: .5em;
+}
+
+
+/* ТАБЛИЦА */
